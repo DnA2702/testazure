@@ -1,0 +1,74 @@
+{
+    "gudang" : [
+        {
+            "id": 1,
+            "nama": "Swallow Nice",
+            "jenis": "sendal",
+            "stok": 20,
+            "jumlahMinimum": 5
+        },
+        {
+            "id": 2,
+            "nama": "Swallow Polkadot",
+            "jenis": "sendal",
+            "stok": 15,
+            "jumlahMinimum": 5
+        },
+        {
+            "id": 3,
+            "nama": "Swallow 05 Seri",
+            "jenis": "sendal",
+            "stok": 5,
+            "jumlahMinimum": 10
+        },
+        {
+            "id": 4,
+            "nama": "Swallow Army",
+            "jenis": "sendal",
+            "stok": 10,
+            "jumlahMinimum": 2
+        },
+        {
+            "id": 5,
+            "nama": "Sepatu Kain",
+            "jenis": "sepatu",
+            "stok": 6,
+            "jumlahMinimum": 3
+        },
+        {
+            "id": 6,
+            "nama": "NB Spicer TG",
+            "jenis": "sepatu",
+            "stok": 5.5,
+            "jumlahMinimum": 2
+        },
+        {
+            "id": 7,
+            "nama": "NE 789 B",
+            "jenis": "sendal",
+            "stok": 0.5,
+            "jumlahMinimum": 3
+        },
+        {
+            "id": 8,
+            "nama": "Porto 1003 K",
+            "jenis": "sendal",
+            "stok": 4,
+            "jumlahMinimum": 1
+        },
+        {
+            "id": 9,
+            "nama": "Ka-Ki 7003 TG",
+            "jenis": "sendal",
+            "stok": 15,
+            "jumlahMinimum": 5
+        },
+        {
+            "id": 10,
+            "nama": "NE L0374",
+            "jenis": "sepatu",
+            "stok": 1.5,
+            "jumlahMinimum": 1
+        }
+    ]
+}
