@@ -1,5 +1,5 @@
 {
-    "gudang" : [
+    "gudang": [
         {
             "id": 1,
             "nama": "Swallow Nice",
@@ -69,6 +69,13 @@
             "jenis": "sepatu",
             "stok": 1.5,
             "jumlahMinimum": 1
+        },
+        {
+            "id": 11,
+            "nama": "AP Boots",
+            "jenis": "sepatu",
+            "stok": 10.0,
+            "jumlahMinimum": 1.0
         }
     ]
 }
