@@ -214,10 +214,7 @@ async def liat_laba(request: Request, param: LiatLaba):
     authorize(request)
     for warehouse in data['gudang']:
         if (warehouse["nama"] == param.nama):
-            unitSiapJual = warehouse["stok"] + param.unitBeli
-            unitPersediaanAkhir = unitSiapJual - param.unitTerjual
-            hpp = unitSiapJual * warehouse["hargaModal"] - unitPersediaanAkhir * warehouse["hargaModal"]
-            labaKotor = param.unitTerjual * param.hargaJual - hpp
+            labaKotor = param.unitTerjual * param.hargaJual - warehouse["hargaModal"] * (warehouse["stok"] + param.unitBeli)
             if (labaKotor >= 0.5 * warehouse["hargaModal"]):
                 return {
                     "message": [
@@ -226,14 +223,18 @@ async def liat_laba(request: Request, param: LiatLaba):
                         "Barang Harus di Stok Lebih Banyak"
                     ]
                 }
-            else:
+            elif (labaKotor < 0.5 * param.hargaModal and labaKotor >= 0):
                 return { 
                     "message": [
                         "Laba Kotor yang Didapat Adalah", 
                         labaKotor
                     ]
                 }
-    raise HTTPException (
-        status_code = status.HTTP_404_NOT_FOUND,
-        detail = "Data Barang Tidak Ada"
-    )
+            else:
+                return {
+                    "message": [
+                        "Mengalami Kerugian Sebesar",
+                        labaKotor
+                    ]
+                }
+            
