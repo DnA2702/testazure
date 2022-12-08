@@ -212,29 +212,35 @@ class LiatLaba(BaseModel):
 @app.get('/gudang/hitungLaba')
 async def liat_laba(request: Request, param: LiatLaba):
     authorize(request)
+    found = False
     for warehouse in data['gudang']:
         if (warehouse["nama"] == param.nama):
-            labaKotor = param.unitTerjual * param.hargaJual - warehouse["hargaModal"] * (warehouse["stok"] + param.unitBeli)
-            if (labaKotor >= 0.5 * warehouse["hargaModal"]):
-                return {
-                    "message": [
-                        "Laba Kotor yang Didapat Adalah",
-                        labaKotor,
-                        "Barang Harus di Stok Lebih Banyak"
-                    ]
-                }
-            elif (labaKotor < 0.5 * param.hargaModal and labaKotor >= 0):
-                return { 
-                    "message": [
-                        "Laba Kotor yang Didapat Adalah", 
-                        labaKotor
-                    ]
-                }
-            else:
-                return {
-                    "message": [
-                        "Mengalami Kerugian Sebesar",
-                        labaKotor
-                    ]
-                }
+            found = True
+            stok = warehouse["stok"]
+            modal = warehouse["hargaModal"]
+    if not found:
+        return { "message": "Data Barang Tidak Ada" }
+    labaKotor = param.unitTerjual * param.hargaJual - modal * (stok + param.unitBeli)
+    if (labaKotor >= (0.5 * warehouse["hargaModal"])):
+        return {
+            "message": [
+                "Laba Kotor yang Didapat Adalah",
+                labaKotor,
+                "Barang Harus di Stok Lebih Banyak"
+            ]
+        }
+    elif (labaKotor < 0.5 * warehouse["hargaModal"] and labaKotor >= 0):
+        return { 
+            "message": [
+                "Laba Kotor yang Didapat Adalah", 
+                labaKotor
+            ]
+        }
+    else:
+        return {
+            "message": [
+                "Mengalami Kerugian Sebesar",
+                labaKotor
+            ]
+        }
             
