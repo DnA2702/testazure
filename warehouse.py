@@ -208,7 +208,7 @@ class LiatLaba(BaseModel):
     unitTerjual: float
     hargaJual: float
 
-#Menghitung Laba Kotor Suatu Barang Menggunakan Metode FIFO Sistem Periodik
+#Menghitung Laba Kotor Suatu Barang
 @app.get('/gudang/hitungLaba')
 async def liat_laba(request: Request, param: LiatLaba):
     authorize(request)
